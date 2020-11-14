@@ -2,10 +2,7 @@ package publishsubscriber;
 
 import org.eclipse.paho.client.mqttv3.*;
 
-public class Subscriber {
-    public static final String BROKER = "tcp://localhost:1883";
-    public static final String CLIENTID = "JavaSample";
-    public static final String TOPIC = "sensor/temperature/";
+public class Subscriber implements ConnectionProps {
 
     public static void main(String []args){
         try{
@@ -27,12 +24,10 @@ public class Subscriber {
                 }
 
                 @Override
-                public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-
-                }
+                public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {}
             });
             client.connect(connectOptions);
-            client.subscribe(TOPIC, 2);
+            client.subscribe(TOPIC, QualityOfService);
 
         }catch (MqttException mqttException){
             System.out.println("Reason: " + mqttException.getReasonCode());

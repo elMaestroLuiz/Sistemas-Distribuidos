@@ -8,10 +8,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.concurrent.TimeUnit;
 
-public class Publisher {
-    public static final String TOPIC = "sensor/temperature/";
-    public static final int QualityOfService = 2;
-    public static final String BROKER = "tcp://localhost:1883";
+public class Publisher implements ConnectionProps{
     public static final String CLIENTID = "JavaSample";
 
     public static void main(String []args){
